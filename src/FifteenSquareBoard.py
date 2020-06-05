@@ -10,10 +10,28 @@ class Square:
         pass
 
     def __repr__(self):
-        return self.value
+        return str(self.value).rjust(2, ' ')
+    
+    def __str__(self):
+        return str(self.value)
 
 
 class FifteenSquareBoard:
     def __init__(self):
-        squares = [Square(i) for i in range(1, 16)] + ['']
+        squares = [Square(i) for i in range(1, 16)]
+        squares.append(Square(' '))
+        assert len(squares) == 16
         self.board = np.array(squares).reshape([4,4])
+    
+    def __repr__(self):
+        divider = '+---+---+---+---+'
+        result = []
+        result.append(divider)
+        for i in range(4):
+            result.append('| {} | {} | {} | {} |'.format(*self.board[i, :]))
+            result.append(divider)
+        return '\n'.join(result)
+
+
+if __name__ == '__main__':
+    test = FifteenSquareBoard()
