@@ -23,6 +23,9 @@ class FifteenSquareBoard:
         assert len(squares) == 16
         self.board = np.array(squares).reshape([4,4])
     
+    def _shuffle(self):
+        pass
+
     def __repr__(self):
         divider = '+---+---+---+---+'
         result = []
